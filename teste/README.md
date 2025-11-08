@@ -17,3 +17,5 @@ Este repositório apresenta um projeto completo de **Quality Assurance (QA)** co
 - **Notion** — documentação complementar
 
 ## 🧩 Estrutura
+
+

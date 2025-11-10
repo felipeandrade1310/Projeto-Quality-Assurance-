@@ -1,10 +1,12 @@
 {
-  "userValido": {
-    "email": "teste@qa.com",
+  "usuarioValido": {
+    "nome": "Felipe QA",
+    "email": "felipe.qa@teste.com",
     "senha": "123456"
   },
-  "userInvalido": {
-    "email": "errado@qa.com",
+  "usuarioInvalido": {
+    "nome": "Invalido QA",
+    "email": "email_invalido",
     "senha": "123"
   }
 }

@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-11-10T01:02:42.824Z",
+    "end": "2025-11-10T01:03:05.677Z",
+    "duration": 22853,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b90d7f56-9643-43b0-a093-f21fe823c7ce",
+      "title": "",
+      "fullFile": "cypress/e2e/teste-login.cy.js",
+      "file": "cypress/e2e/teste-login.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "8ed6df74-7b14-4aaa-8baf-d9d0204f53c1",
+          "title": "Teste de cadastro - AdoPet",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve realizar cadastro corretamente na página do AdoPet",
+              "fullTitle": "Teste de cadastro - AdoPet Deve realizar cadastro corretamente na página do AdoPet",
+              "timedOut": null,
+              "duration": 7249,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://adopet-frontend-cypress.vercel.app');\ncy.contains('Cadastrar').click();\nconst emailUnico = this.data.usuarioValido.email.replace('@', `+${Date.now()}@`);\ncy.get('[data-test=\"input-name\"]').type(this.data.usuarioValido.nome);\ncy.get('[data-test=\"input-email\"]').type(emailUnico);\ncy.get('[data-test=\"input-password\"]').type(this.data.usuarioValido.senha);\ncy.get('[data-test=\"input-confirm-password\"]').type(this.data.usuarioValido.senha);\ncy.get('[data-test=\"submit-button\"]').click();\n// Espera até 5 segundos por mensagem de sucesso\ncy.contains('Cadastro realizado com sucesso', {\n  timeout: 5000\n}).should('be.visible');\n// Ou, se quiser forçar espera independente da mensagem:\n// cy.wait(5000);\n// Confirma redirecionamento pra tela de login\ncy.url().should('include', '/login');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 5000ms: Expected to find content: 'Cadastro realizado com sucesso' but never did.",
+                "estack": "AssertionError: Timed out retrying after 5000ms: Expected to find content: 'Cadastro realizado com sucesso' but never did.\n    at Context.eval (webpack://teste/./cypress/e2e/teste-login.cy.js:19:69)",
+                "diff": null
+              },
+              "uuid": "b094bbb5-8ba9-4572-821d-f6a143866b7b",
+              "parentUUID": "8ed6df74-7b14-4aaa-8baf-d9d0204f53c1",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "b094bbb5-8ba9-4572-821d-f6a143866b7b"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 7249,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

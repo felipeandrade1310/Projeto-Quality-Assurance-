@@ -1,15 +1,26 @@
 {
   "name": "teste",
   "version": "1.0.0",
+  "description": "Projeto de QA E2E com Cypress e Mochawesome",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "cy:open": "cypress open",
+  "cy:run": "cypress run --browser chrome --headless",
+  "cy:run:cadastro": "cypress run --spec 'cypress/e2e/teste-cadastro.cy.js' --browser chrome --headless",
+  "cy:run:login": "cypress run --spec 'cypress/e2e/teste-login.cy.js' --browser chrome --headless",
+  "cy:report:merge": "npx mochawesome-merge cypress/reports/*.json > mochawesome.json",
+  "cy:report:generate": "npx marge mochawesome.json --reportDir mochawesome-report --inline",
+  "cy:report:cadastro": "npm run cy:run:cadastro && npm run cy:report:merge && npm run cy:report:generate",
+  "cy:report:login": "npm run cy:run:login && npm run cy:report:merge && npm run cy:report:generate",
+  "cy:test:full": "npm run cy:run && npm run cy:report:merge && npm run cy:report:generate"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "devDependencies": {
-    "cypress": "^14.5.4"
+    "cypress": "^14.5.4",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^4.4.1",
+    "mochawesome-report-generator": "^6.3.2"
   }
 }

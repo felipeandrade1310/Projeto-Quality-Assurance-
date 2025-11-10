@@ -1,17 +1,27 @@
-describe('Teste de cadastro', () => {
-  it('Deve realizar login corretamente na página do AdoPet', () => {
-    cy.visit('https://adopet-frontend-cypress.vercel.app')
+describe('Teste de cadastro - AdoPet', () => {
+  beforeEach(function () {
+    cy.fixture('users').as('data');
+  });
+
+  it('Deve realizar cadastro corretamente na página do AdoPet', function () {
+    cy.visit('https://adopet-frontend-cypress.vercel.app');
     cy.contains('Cadastrar').click();
-    cy.get('[data-test="input-name"]').click();
-    cy.get('[data-test="input-Felipe Andrade Alves').type();
-  })
 
-      // it('Deve realizar o cadastro com sucesso', () => {
-      // cy.contains('Cadastrar').click();
-    // cy.get('input[name="nome"]').type('Felipe QA');
-    // cy.get('input[name="email"]').type(`felipe.qa${Date.now()}@teste.com`);
-    // cy.get('input[name="password"]').type('123456');
-    // cy.get('input[name="confirmPassword"]').type('123456');
-    // cy.contains('Cadastrar').click();
-    })
+    const emailUnico = this.data.usuarioValido.email.replace('@', `+${Date.now()}@`);
 
+    cy.get('[data-test="input-name"]').type(this.data.usuarioValido.nome);
+    cy.get('[data-test="input-email"]').type(emailUnico);
+    cy.get('[data-test="input-password"]').type(this.data.usuarioValido.senha);
+    cy.get('[data-test="input-confirm-password"]').type(this.data.usuarioValido.senha);
+    cy.get('[data-test="submit-button"]').click();
+
+    // Espera até 5 segundos por mensagem de sucesso
+    cy.contains('Cadastro realizado com sucesso', { timeout: 5000 }).should('be.visible');
+
+    // Ou, se quiser forçar espera independente da mensagem:
+    // cy.wait(5000);
+
+    // Confirma redirecionamento pra tela de login
+    cy.url().should('include', '/login');
+  });
+});

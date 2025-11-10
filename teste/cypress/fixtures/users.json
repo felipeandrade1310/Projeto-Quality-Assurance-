@@ -1,0 +1,12 @@
+{
+  "usuarioValido": {
+    "nome": "Felipe QA",
+    "email": "felipe.qa@tesste.com",
+    "senha": "Qa123446"
+  },
+  "usuarioInvalido": {
+    "nome": "Invalido QA",
+    "email": "email_invalido",
+    "senha": "123"
+  }
+}
